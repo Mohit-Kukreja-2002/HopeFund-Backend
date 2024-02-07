@@ -12,16 +12,16 @@ export const accessTokenOptions = {
     expires: new Date(Date.now() + accessTokenExpire * 60  * 60 * 1000),
     maxAge: accessTokenExpire * 60 * 60 * 1000,
     httpOnly: true,
-    sameSite: "lax",
-    // secure:true,
+    sameSite: "none",
+    secure:true,
 };
 
 export const refreshTokenOptions= {
     expires: new Date(Date.now() + refreshTokenExpire * 24 * 60 * 60 * 1000),
     maxAge: refreshTokenExpire * 24 * 60 * 60 * 1000,
     httpOnly: true,
-    sameSite: "lax",
-    // secure: true,
+    sameSite: "none",
+    secure: true,
 };
 
 export const sendToken=(user,statusCode,res)=>{
@@ -31,9 +31,9 @@ export const sendToken=(user,statusCode,res)=>{
     // uplaod session to redis
     redis.set(user._id, JSON.stringify(user));
 
-    if(process.env.NODE_ENV==='production'){
-        accessTokenOptions.secure=true;
-    }  
+    // if(process.env.NODE_ENV==='production'){
+    //     accessTokenOptions.secure=true;
+    // }  
   
     res.cookie("access_token", accessToken, accessTokenOptions);
     res.cookie("refresh_token", refreshToken, refreshTokenOptions);
