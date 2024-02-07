@@ -22,7 +22,7 @@ app.use(cookieParser());
 // cors == cross origin resource sharing
 // if not used ==> one can hit the api from any other url
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://hopefund-frontend.vercel.app/'],
     credentials: true
 }));
 
