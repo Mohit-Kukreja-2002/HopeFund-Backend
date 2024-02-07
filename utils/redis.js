@@ -11,7 +11,6 @@ const redisClient = () => {
 }
 // Add connectTimeout option here
 const redisOptions = {
-    connectTimeout: 10000, // Adjust the timeout value as needed
     tls: {
         rejectUnauthorized: false,
     },
