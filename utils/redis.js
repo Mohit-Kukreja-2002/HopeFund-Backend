@@ -9,4 +9,9 @@ const redisClient=()=>{
     }
     throw new Error("Redis connection failed");
 }
-export const redis=new Redis(redisClient());
+// Add connectTimeout option here
+const redisOptions = {
+    connectTimeout: 10000, // Adjust the timeout value as needed
+};
+
+export const redis=new Redis(redisClient(),redisOptions);
